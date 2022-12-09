@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <title>CantorSpring</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<header>
+    <span class="title">Zajebisty kantor</span>
+</header>
+
+<div class="main-content">
+    <img src="https://cdn.corporatefinanceinstitute.com/assets/currency.jpeg">
+    <div class="summary">
+        <h1> Wymień walute </h1>
+
+
+        <form th:action="@{/admin}" method="post">
+            <label for="waluty">Wybierz walute:</label>
+            <select name="waluty" id="waluty">
+                <option value="USD">USD</option>
+        
+              </select>
+              <br><br>
+            <label>Podaj walute</label>
+            <input type="text" name="currencyTo" required>
+            <label>Ilość</label>
+            <input type="number" min="0.01" step="0.01" name="amount" required>
+            <button type="submit">Dodaj transakcje</button>
+        </form>
+        <form th:action="@{/history}" th:method="post">
+            <button type="submit"> Historia transakcji</button>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

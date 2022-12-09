@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>CantorSpring</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<h1>Historia transakcji</h1>
+<table>
+    <thead>
+    <tr>
+        <th> Id</th>
+        <th> Z</th>
+        <th> Na</th>
+        <th> Ilość przed</th>
+        <th> Kurs</th>
+        <th> Ilość po</th>
+        <th> Data</th>
+    </tr>
+    </thead>
+
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.getId()}"></td>
+        <td th:text="${transaction.currencyFrom}"></td>
+        <td th:text="${transaction.currencyTo}"></td>
+        <td th:text="${transaction.getAmount()}"></td>
+        <td th:text="${transaction.getRate()}"></td>
+        <td th:text="${transaction.afterConversion}"></td>
+        <td th:text="${transaction.getDate()}"></td>
+    </tr>
+
+
+</table>
+<form th:action="@{/history}" th:method="get">
+    <input type="image" class="return" src="http://www.clker.com//cliparts/T/O/2/h/I/8/return-button-hi.png"/>
+</form>
+</body>
+
+
+</html>

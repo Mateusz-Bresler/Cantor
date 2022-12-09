@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <title>CantorSpring</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<header>
+    <span class="title">Zajebisty kantor</span>
+</header>
+
+<div class="main-content">
+<!--    <input type="image" class="currency" src="https://cdn.corporatefinanceinstitute.com/assets/currency.jpeg"/>-->
+    <img  src="https://cdn.corporatefinanceinstitute.com/assets/currency.jpeg">
+<!--    <img  src="https://www.forbes.com/advisor/wp-content/uploads/2021/06/getty_currency-exchange_062321.jpeg-900x510.jpg">-->
+    <div class="summary">
+        <h1> Wymień walute </h1>
+
+
+        <form th:action="@{/exchange}" method="post">
+            <label for="currencyFrom">Wybierz walute z:</label>
+            <select name="currencyFrom" id="currencyFrom">
+                <option value="USD"> USD</td></option>
+            </select>
+            <br><br>
+
+
+            <label for="currencyTo">Wybierz walute na:</label>
+            <select name="currencyTo" id="currencyTo">
+                <tr th:each="option : ${options}">
+                    <option value= <td th:value="${option}"> <td th:text="${option}" ></td></option>
+
+            </select>
+            <br><br>
+
+
+
+<!--            <label>Podaj walute</label>-->
+<!--            <input type="text" name="currencyFrom" required>-->
+<!--            <label>Podaj walute</label>-->
+<!--            <input type="text" name="currencyTo" required>-->
+
+
+
+            <label>Ilość</label>
+            <input type="number" min="0.01" step="0.01" name="amount" required>
+            <button type="submit">Dodaj transakcje</button>
+        </form>
+        <form th:action="@{/history}" th:method="post">
+            <button type="submit"> Historia transakcji</button>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
